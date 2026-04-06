@@ -41,7 +41,7 @@ If a query has no matches, the CLI prints `No results found.` instead of an empt
 
 The generator is derived from [CMUdict](https://github.com/cmusphinx/cmudict), the Carnegie Mellon Pronouncing Dictionary maintained by Carnegie Mellon University.
 
-`bun run derive:model` downloads the current `cmudict.dict` file and Princeton WordNet database, then generates [bin/cmudict-model.ts](/Users/nrjdalal/Desktop/namegen/bin/cmudict-model.ts) and [bin/wordnet-definitions.ts](/Users/nrjdalal/Desktop/namegen/bin/wordnet-definitions.ts).
+`bun run derive:model` downloads the current `cmudict.dict` file and Princeton WordNet database, then generates [bin/cmudict-model.ts](./bin/cmudict-model.ts) and [bin/wordnet-definitions.ts](./bin/wordnet-definitions.ts).
 
 This means:
 

@@ -59,7 +59,7 @@ const printHelp = () => {
   console.log(helpMessage)
 }
 
-const exitWithError = (message: string) => {
+const exitWithError = (message: string): never => {
   console.error(message)
   process.exit(1)
 }
@@ -449,49 +449,53 @@ const writeNames = (targetLength: number, prefix: string, suffix: string) => {
   process.stdout.write(buffer)
 }
 
-const main = () => {
-  let parsedArgs:
-    | ReturnType<
-        typeof parseArgs<{
-          help: { type: "boolean"; short: "h" }
-          version: { type: "boolean"; short: "v" }
-          length: { type: "string"; short: "l" }
-          "starts-with": { type: "string"; short: "s" }
-          "ends-with": { type: "string"; short: "e" }
-        }>
-      >
-    | undefined
+const parseOptions = {
+  help: { type: "boolean", short: "h" },
+  version: { type: "boolean", short: "v" },
+  length: { type: "string", short: "l" },
+  "starts-with": { type: "string", short: "s" },
+  "ends-with": { type: "string", short: "e" },
+} as const
 
+type ParsedValues = {
+  "ends-with"?: string
+  help?: boolean
+  length?: string
+  "starts-with"?: string
+  version?: boolean
+}
+
+const parseCliArgs = (): ParsedValues => {
   try {
-    parsedArgs = parseArgs({
-      options: {
-        help: { type: "boolean", short: "h" },
-        version: { type: "boolean", short: "v" },
-        length: { type: "string", short: "l" },
-        "starts-with": { type: "string", short: "s" },
-        "ends-with": { type: "string", short: "e" },
-      },
+    const { values } = parseArgs({
+      options: parseOptions,
       strict: true,
     })
+
+    return values as ParsedValues
   } catch (error) {
     const message = error instanceof Error ? error.message : "Failed to parse arguments"
 
-    exitWithError(message)
+    return exitWithError(message)
   }
+}
 
-  if (parsedArgs.values.version) {
+const main = () => {
+  const parsedValues = parseCliArgs()
+
+  if (parsedValues.version) {
     printVersion()
     return
   }
 
-  if (parsedArgs.values.help) {
+  if (parsedValues.help) {
     printHelp()
     return
   }
 
-  const length = parseLength(parsedArgs.values.length)
-  const prefix = parsePrefix(parsedArgs.values["starts-with"], length)
-  const suffix = parseSuffix(parsedArgs.values["ends-with"], length)
+  const length = parseLength(parsedValues.length)
+  const prefix = parsePrefix(parsedValues["starts-with"], length)
+  const suffix = parseSuffix(parsedValues["ends-with"], length)
 
   writeNames(length, prefix, suffix)
 }

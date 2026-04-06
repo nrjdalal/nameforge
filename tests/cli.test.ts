@@ -3,7 +3,7 @@ import { resolve } from "node:path"
 
 import packageJson from "../package.json"
 
-const CLI = ["node", resolve("dist/index.mjs")]
+const CLI = [process.execPath, resolve("bin/index.ts")]
 
 async function run(args: string[], env: Record<string, string> = {}) {
   const mergedEnv = { ...process.env, ...env }
