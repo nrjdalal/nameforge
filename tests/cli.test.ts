@@ -83,8 +83,8 @@ describe("wordloom CLI", () => {
     expect(exitCode).toBe(0)
     expect(stderr).toBe("")
     expect(stdout).toContain("CMUdict-derived")
-    expect(stdout).toContain("--starts-with <prefix>")
-    expect(stdout).toContain("--ends-with <suffix>")
+    expect(stdout).toContain("--prefix <prefix>")
+    expect(stdout).toContain("--suffix <suffix>")
     expect(stdout).toContain("WordNet meanings")
     expect(stdout).toContain("usage examples are removed")
     expect(stdout).toContain("Dictionary matches are colored")
@@ -108,7 +108,7 @@ describe("wordloom CLI", () => {
   })
 
   it("shows the package version even when other options would fail validation", async () => {
-    const { stdout, stderr, exitCode } = await run(["--version", "--starts-with", "123"])
+    const { stdout, stderr, exitCode } = await run(["--version", "--prefix", "123"])
 
     expect(exitCode).toBe(0)
     expect(stderr).toBe("")
@@ -153,7 +153,7 @@ describe("wordloom CLI", () => {
   })
 
   it("filters generated names by prefix", async () => {
-    const { stdout, stderr, exitCode } = await run(["--starts-with", "no"])
+    const { stdout, stderr, exitCode } = await run(["--prefix", "no"])
     const { rows } = parseTableOutput(stdout)
 
     expect(exitCode).toBe(0)
@@ -168,7 +168,7 @@ describe("wordloom CLI", () => {
   })
 
   it("filters generated names by suffix", async () => {
-    const { stdout, stderr, exitCode } = await run(["--ends-with", "ut"])
+    const { stdout, stderr, exitCode } = await run(["--suffix", "ut"])
     const { rows } = parseTableOutput(stdout)
 
     expect(exitCode).toBe(0)
@@ -184,7 +184,7 @@ describe("wordloom CLI", () => {
   })
 
   it("fills the meaning column for WordNet words", async () => {
-    const { stdout, stderr, exitCode } = await run(["--length", "6", "--starts-with", "absent"])
+    const { stdout, stderr, exitCode } = await run(["--length", "6", "--prefix", "absent"])
     const { rows } = parseTableOutput(stdout)
 
     expect(exitCode).toBe(0)
@@ -199,7 +199,7 @@ describe("wordloom CLI", () => {
   })
 
   it("colors dictionary words when color output is forced", async () => {
-    const { stdout, stderr, exitCode } = await run(["--length", "6", "--starts-with", "absent"], {
+    const { stdout, stderr, exitCode } = await run(["--length", "6", "--prefix", "absent"], {
       FORCE_COLOR: "1",
     })
 
@@ -209,7 +209,7 @@ describe("wordloom CLI", () => {
   })
 
   it("leaves the meaning column empty for generated non-dictionary names", async () => {
-    const { stdout, stderr, exitCode } = await run(["--length", "6", "--starts-with", "noaked"])
+    const { stdout, stderr, exitCode } = await run(["--length", "6", "--prefix", "noaked"])
     const { rows } = parseTableOutput(stdout)
 
     expect(exitCode).toBe(0)
@@ -218,7 +218,7 @@ describe("wordloom CLI", () => {
   })
 
   it("prints a no-results message when the requested prefix is not supported by the source model", async () => {
-    const { stdout, stderr, exitCode } = await run(["--starts-with", "zz"])
+    const { stdout, stderr, exitCode } = await run(["--prefix", "zz"])
 
     expect(exitCode).toBe(0)
     expect(stderr).toBe("")
@@ -229,9 +229,9 @@ describe("wordloom CLI", () => {
     const { stdout, stderr, exitCode } = await run([
       "--length",
       "2",
-      "--starts-with",
+      "--prefix",
       "no",
-      "--ends-with",
+      "--suffix",
       "ut",
     ])
 
@@ -241,7 +241,7 @@ describe("wordloom CLI", () => {
   })
 
   it("prints a no-results message when a prefix has no valid completion at the target length", async () => {
-    const { stdout, stderr, exitCode } = await run(["--starts-with", "vaib"])
+    const { stdout, stderr, exitCode } = await run(["--prefix", "vaib"])
 
     expect(exitCode).toBe(0)
     expect(stderr).toBe("")

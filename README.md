@@ -4,6 +4,8 @@
 
 [![npm](https://img.shields.io/npm/v/wordloom?color=red&logo=npm)](https://www.npmjs.com/package/wordloom)
 [![downloads](https://img.shields.io/npm/dt/wordloom?color=red&logo=npm)](https://www.npmjs.com/package/wordloom)
+[![stars](https://img.shields.io/github/stars/nrjdalal/wordloom?color=blue)](https://github.com/nrjdalal/wordloom)
+[![Twitter](https://img.shields.io/twitter/follow/nrjdalal_dev?label=%40nrjdalal_dev)](https://twitter.com/nrjdalal_dev)
 [![license](https://img.shields.io/npm/l/wordloom)](https://www.npmjs.com/package/wordloom)
 
 `wordloom` gives you lowercase name ideas in a clean terminal table. If a result is also a real dictionary word, it shows the meaning next to it.
@@ -19,23 +21,34 @@ Good for:
 
 ```sh
 npx wordloom
-npx wordloom --starts-with no
-npx wordloom --ends-with ut
-npx wordloom --length 6 --starts-with abs
+npx wordloom --prefix no
+npx wordloom --suffix ut
+npx wordloom --length 6 --prefix abs
 ```
 
 Default length is `5`. Supported lengths are `2` through `8`.
 
-Example output:
+Example:
+
+```sh
+npx wordloom --length 6 --prefix abs
+```
+
+Output starts like this:
 
 ```text
-┌───┬────────┬─────────────────────────────────────────────────────────────┐
-│   │ name   │ meaning                                                     │
-├───┼────────┼─────────────────────────────────────────────────────────────┤
-│ 1 │ absent │ verb: go away or leave; adjective: not being in a          │
-│   │        │ specified place                                             │
-│ 2 │ noaked │                                                             │
-└───┴────────┴─────────────────────────────────────────────────────────────┘
+┌────┬────────┬────────────────────────────────────────────────────────────────────────────────┐
+│    │ name   │ meaning                                                                        │
+├────┼────────┼────────────────────────────────────────────────────────────────────────────────┤
+│ 1  │ absalo │                                                                                │
+│ 2  │ absara │                                                                                │
+│ 3  │ abscam │                                                                                │
+│ 4  │ absces │                                                                                │
+│ 5  │ abscon │                                                                                │
+│ 6  │ abscot │                                                                                │
+│ 7  │ abseco │                                                                                │
+│ 8  │ absect │                                                                                │
+│ 9  │ absent │ verb: go away or leave; adjective: not being in a specified place              │
 ```
 
 If nothing matches, `wordloom` prints:
@@ -62,15 +75,15 @@ wordloom --help
 You can also run it without installing:
 
 ```sh
-npx wordloom --starts-with no
+npx wordloom --prefix no
 ```
 
 ## Options
 
 ```text
 -l, --length <number>         Exact name length to generate (2-8, default: 5)
--s, --starts-with <prefix>    Literal starting prefix to validate and continue from
--e, --ends-with <suffix>      Literal ending suffix to require
+-p, --prefix <prefix>         Literal starting prefix to validate and continue from
+-s, --suffix <suffix>         Literal ending suffix to require
 -h, --help                    Show help
 -v, --version                 Show version
 ```
@@ -80,10 +93,10 @@ npx wordloom --starts-with no
 ```sh
 wordloom
 wordloom --length 6
-wordloom --starts-with no
-wordloom --ends-with ut
-wordloom --length 6 --starts-with abs
-wordloom --length 5 --starts-with re --ends-with t
+wordloom --prefix no
+wordloom --suffix ut
+wordloom --length 6 --prefix abs
+wordloom --length 5 --prefix re --suffix t
 ```
 
 ## How it works

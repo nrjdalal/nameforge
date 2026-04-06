@@ -1,13 +1,12 @@
-name: CI
+name: Test
 
 on:
   push:
     branches:
       - "**"
-  pull_request:
 
 jobs:
-  validate:
+  test:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]

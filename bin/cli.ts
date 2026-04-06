@@ -16,18 +16,18 @@ ${commandName}
 Generate lowercase names from a CMUdict-derived English letter-transition model.
 
 Usage:
-  ${commandName} [--length <number>] [--starts-with <prefix>] [--ends-with <suffix>]
+  ${commandName} [--length <number>] [--prefix <prefix>] [--suffix <suffix>]
 
 Examples:
   ${commandName}
-  ${commandName} --starts-with no
-  ${commandName} --ends-with ut
-  ${commandName} --length 6 --starts-with absent
+  ${commandName} --prefix no
+  ${commandName} --suffix ut
+  ${commandName} --length 6 --prefix absent
 
 Options:
   -l, --length <number>         Exact name length to generate (2-8, default: 5)
-  -s, --starts-with <prefix>    Literal starting prefix to validate and continue from
-  -e, --ends-with <suffix>      Literal ending suffix to require
+  -p, --prefix <prefix>         Literal starting prefix to validate and continue from
+  -s, --suffix <suffix>         Literal ending suffix to require
   -h, --help                    Show help
   -v, --version                 Show version
 
@@ -48,15 +48,15 @@ const parseOptions = {
   help: { type: "boolean", short: "h" },
   version: { type: "boolean", short: "v" },
   length: { type: "string", short: "l" },
-  "starts-with": { type: "string", short: "s" },
-  "ends-with": { type: "string", short: "e" },
+  prefix: { type: "string", short: "p" },
+  suffix: { type: "string", short: "s" },
 } as const
 
 type ParsedValues = {
-  "ends-with"?: string
   help?: boolean
   length?: string
-  "starts-with"?: string
+  prefix?: string
+  suffix?: string
   version?: boolean
 }
 
@@ -93,7 +93,7 @@ const parseLength = (rawLength: string | undefined) => {
 }
 
 const parseLettersOnlyOption = (
-  optionName: "--starts-with" | "--ends-with",
+  optionName: "--prefix" | "--suffix",
   rawValue: string | undefined,
   length: number,
 ) => {
@@ -119,10 +119,10 @@ const parseLettersOnlyOption = (
 }
 
 const parsePrefix = (rawPrefix: string | undefined, length: number) =>
-  parseLettersOnlyOption("--starts-with", rawPrefix, length)
+  parseLettersOnlyOption("--prefix", rawPrefix, length)
 
 const parseSuffix = (rawSuffix: string | undefined, length: number) =>
-  parseLettersOnlyOption("--ends-with", rawSuffix, length)
+  parseLettersOnlyOption("--suffix", rawSuffix, length)
 
 const parseCliArgs = (): ParsedValues => {
   try {
@@ -159,8 +159,8 @@ export const readCliOptions = (): CliOptions => {
   return {
     help,
     length,
-    prefix: parsePrefix(parsedValues["starts-with"], length),
-    suffix: parseSuffix(parsedValues["ends-with"], length),
+    prefix: parsePrefix(parsedValues.prefix, length),
+    suffix: parseSuffix(parsedValues.suffix, length),
     version,
   }
 }

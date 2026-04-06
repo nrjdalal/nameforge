@@ -15,15 +15,15 @@
     "wordloom",
     "wordnet"
   ],
-  "homepage": "https://github.com/nrjdalal/nameforge#readme",
-  "bugs": "https://github.com/nrjdalal/nameforge/issues",
+  "homepage": "https://github.com/nrjdalal/wordloom#readme",
+  "bugs": "https://github.com/nrjdalal/wordloom/issues",
   "license": "MIT",
   "author": {
     "name": "Neeraj Dalal",
     "email": "admin@nrjdalal.com",
     "url": "https://nrjdalal.com"
   },
-  "repository": "nrjdalal/nameforge",
+  "repository": "nrjdalal/wordloom",
   "funding": "https://github.com/sponsors/nrjdalal",
   "bin": {
     "wordloom": "./dist/index.mjs"
@@ -39,7 +39,8 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "lint": "oxlint .",
-    "test": "bun test"
+    "prepare": "bunx lefthook install",
+    "test": "tsdown && bun test tests/cli.test.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
