@@ -1,7 +1,6 @@
 {
-  "name": "nameforge",
+  "name": "wordloom",
   "version": "0.1.0",
-  "private": true,
   "description": "Generate source-backed lowercase names from a CMUdict-derived transition model.",
   "keywords": [
     "bun",
@@ -9,13 +8,13 @@
     "cmudict",
     "generator",
     "name",
-    "nameforge",
     "phonotactics",
-    "typescript"
+    "typescript",
+    "wordloom"
   ],
   "license": "MIT",
   "bin": {
-    "nameforge": "./dist/index.mjs"
+    "wordloom": "./dist/index.mjs"
   },
   "files": [
     "dist"

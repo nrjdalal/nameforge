@@ -80,7 +80,7 @@ ${sortedTransitionEntries}
 ])
 `
 
-const tempDir = await mkdtemp(join(tmpdir(), "nameforge-wordnet-"))
+const tempDir = await mkdtemp(join(tmpdir(), "wordloom-wordnet-"))
 
 try {
   const wordnetArchivePath = join(tempDir, "WNdb-3.0.tar.gz")

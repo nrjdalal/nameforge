@@ -1,4 +1,4 @@
-# nameforge
+# wordloom
 
 Generate lowercase names from a CMUdict-derived English letter-transition model, with a meaning column sourced from WordNet when a generated name is also a dictionary lemma.
 
@@ -42,7 +42,7 @@ If a query has no matches, the CLI prints `No results found.` instead of an empt
 
 The generator is derived from [CMUdict](https://github.com/cmusphinx/cmudict), the Carnegie Mellon Pronouncing Dictionary maintained by Carnegie Mellon University.
 
-The CLI reads checked-in generated data from [bin/cmudict-model.ts](./bin/cmudict-model.ts) and [bin/wordnet-definitions.ts](./bin/wordnet-definitions.ts), so installed users can run `nameforge` immediately.
+The CLI reads checked-in generated data from [bin/cmudict-model.ts](./bin/cmudict-model.ts) and [bin/wordnet-definitions.ts](./bin/wordnet-definitions.ts), so installed users can run `wordloom` immediately.
 
 `bun run derive:model` is a maintainer workflow. It downloads the current `cmudict.dict` file and Princeton WordNet database, regenerates those checked-in files, and formats the generated output.
 

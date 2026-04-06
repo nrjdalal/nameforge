@@ -4,7 +4,7 @@ import packageJson from "../package.json"
 import { CMUDICT_CONTEXT_SIZE, CMUDICT_SOURCE_URL, CMUDICT_WORD_COUNT } from "./cmudict-model"
 import { WORDNET_DEFINITION_COUNT, WORDNET_SOURCE_URL } from "./wordnet-definitions"
 
-export const commandName = Object.keys(packageJson.bin)[0] ?? "nameforge"
+export const commandName = Object.keys(packageJson.bin)[0] ?? "wordloom"
 
 const DEFAULT_LENGTH = 5
 const MIN_LENGTH = 2

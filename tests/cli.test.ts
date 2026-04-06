@@ -76,7 +76,7 @@ function parseTableOutput(stdout: string) {
   }
 }
 
-describe("nameforge CLI", () => {
+describe("wordloom CLI", () => {
   it("shows help when requested", async () => {
     const { stdout, stderr, exitCode } = await run(["--help"])
 
