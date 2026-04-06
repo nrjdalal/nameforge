@@ -10,7 +10,7 @@ export default function LandingPage() {
       <VantaBackground />
 
       {/* 4:3 Ratio Container */}
-      <main className="w-full max-w-6xl aspect-[4/3] bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative layout-container z-10">
+      <main className="w-full max-w-6xl min-h-[95vh] md:min-h-0 md:aspect-[4/3] bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative layout-container z-10">
         {/* Header / Masthead */}
         <header className="border-b border-[#1a1a1a] p-6 lg:p-8 flex justify-between items-start shrink-0">
           <div>

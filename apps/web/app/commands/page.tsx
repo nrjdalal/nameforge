@@ -42,7 +42,7 @@ export default function CommandsPage() {
     <div className="relative min-h-screen text-[#1a1a1a] flex items-center justify-center p-4 selection:bg-[#1a1a1a] selection:text-[#ecebe5]">
       <VantaBackground />
 
-      <main className="w-full max-w-4xl bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative z-10">
+      <main className="w-full max-w-4xl min-h-[95vh] md:min-h-0 bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative z-10">
         <header className="border-b border-[#1a1a1a] p-6 lg:p-8 flex justify-between items-center shrink-0">
           <h1 className="font-serif text-3xl font-bold uppercase tracking-tighter">CLI Commands</h1>
           <Link

@@ -80,7 +80,7 @@ export default function TryPage() {
       <VantaBackground />
 
       {/* 4:3 Ratio Container */}
-      <main className="w-full max-w-6xl aspect-[4/3] bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative z-10">
+      <main className="w-full max-w-6xl h-[calc(100vh-2rem)] md:h-auto md:aspect-[4/3] bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative z-10">
         {/* Header */}
         <header className="border-b border-[#1a1a1a] p-6 lg:p-8 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-4">
