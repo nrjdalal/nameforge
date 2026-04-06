@@ -31,10 +31,10 @@ const buildFailureTable = (pattern: string) => {
   const failureTable = Array.from({ length: pattern.length }, () => 0)
 
   for (let index = 1; index < pattern.length; index += 1) {
-    let candidateLength = failureTable[index - 1]
+    let candidateLength = failureTable[index - 1] ?? 0
 
     while (candidateLength > 0 && pattern[index] !== pattern[candidateLength]) {
-      candidateLength = failureTable[candidateLength - 1]
+      candidateLength = failureTable[candidateLength - 1] ?? 0
     }
 
     if (pattern[index] === pattern[candidateLength]) {
@@ -60,7 +60,7 @@ const advancePatternState = (
   let nextState = currentState
 
   while (nextState > 0 && character !== pattern[nextState]) {
-    nextState = failureTable[nextState - 1]
+    nextState = failureTable[nextState - 1] ?? 0
   }
 
   if (character === pattern[nextState]) {

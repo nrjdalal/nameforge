@@ -1,0 +1,21 @@
+{
+  "node": {
+    "786bed14143c479cf70a8ab9c699283da145fc0deb": {
+      "workers": {
+        "app/try/page": {
+          "moduleId": 12003,
+          "async": false,
+          "exportedName": "generateNamesAction",
+          "filename": "apps/web/app/actions.ts"
+        }
+      },
+      "layer": {
+        "app/try/page": "action-browser"
+      },
+      "filename": "apps/web/app/actions.ts",
+      "exportedName": "generateNamesAction"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "B7aXGKrTlrnBzhCU8SfPfh9R67Y2jrjwaEGuewZYxUE="
+}

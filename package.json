@@ -28,6 +28,10 @@
   "bin": {
     "wordloom": "./dist/index.mjs"
   },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "files": [
     "dist"
   ],
