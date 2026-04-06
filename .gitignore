@@ -26,3 +26,6 @@ dist/
 out/
 .vercel/
 .env*.local
+
+# turborepo
+.turbo/
