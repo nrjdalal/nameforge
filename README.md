@@ -1,41 +1,61 @@
-# wordloom
+# Wordloom
 
-**Generate short, word-like lowercase names from real English letter patterns.**
+**A sophisticated engine to generate short, word-like lowercase names from real English letter patterns, equipped with a high-performance CLI and a stunning Web Studio.**
 
 [![Twitter](https://img.shields.io/twitter/follow/nrjdalal?label=%40nrjdalal_dev)](https://twitter.com/nrjdalal)
 [![npm](https://img.shields.io/npm/v/wordloom?color=red&logo=npm)](https://www.npmjs.com/package/wordloom)
-[![downloads](https://img.shields.io/npm/dt/wordloom?color=red&logo=npm)](https://www.npmjs.com/package/wordloom)
-[![stars](https://img.shields.io/github/stars/nrjdalal/wordloom?color=blue)](https://github.com/nrjdalal/wordloom)
 [![license](https://img.shields.io/npm/l/wordloom)](https://www.npmjs.com/package/wordloom)
 
-`wordloom` gives you lowercase name ideas in a clean terminal table. If a result is also a real dictionary word, it shows the meaning next to it.
+Wordloom gives you lowercase name ideas based on contextual phonotactics. If a generated result happens to be a real dictionary word, Wordloom instantly fetches and displays its exact meaning.
 
-Good for:
+Perfect for naming side projects, exploring short word-like combinations, or strictly filtering names that start, end, or contain specific letter sequences.
 
-- naming side projects, experiments, or folders
-- exploring short word-like combinations
-- finding names that start, end, or contain a certain pattern
-- spotting real dictionary words among generated results
+---
 
-## Quick usage
+## ✦ Wordloom Studio (Web Application)
+
+Wordloom has evolved from a standalone CLI into a fully interactive **Wordloom Studio**. Built as a robust monolithic workspace, the Studio is designed with an emphasis on minimalist, editorial aesthetics and a premium user experience.
+
+### Key Studio Features:
+
+- **Interactive UI & CLI Mode:** Toggle seamlessly between a tactile visual configuration board and an integrated browser-terminal to input constraint commands exactly like the CLI.
+- **Text-Flipping Board:** Powered by Aceternity UI, featuring beautiful 3D mechanical split-flap animations for your generated characters.
+- **Kinetic Vanta FOG Backgrounds:** A heavily customized, beautiful fluid background using WebGL (`three.js`) dynamically tracking the cursor for maximum immersion.
+- **Real-Time Next.js 15+ Rendering:** Optimized heavily via Turbopack for instantaneous computation.
+
+### Running the Studio Locally
+
+The architecture utilizes **Turborepo** and **Bun** to manage local packages and applications effortlessly.
+
+```bash
+# Clone the repository
+git clone https://github.com/whoavidwivedi/wordloomUI.git
+cd wordloomUI
+
+# Install dependencies using Bun
+bun install
+
+# Start the development server across all packages
+bun dev
+```
+
+Navigate to `http://localhost:3000` to dive into the Studio!
+
+---
+
+## ✦ Wordloom CLI
+
+To use Wordloom strictly from your terminal in any environment without installing the Studio:
+
+### Quick Usage
 
 ```sh
 npx wordloom
 npx wordloom --prefix no
-npx wordloom --suffix ut
-npx wordloom --contains abse
-npx wordloom --length 6 --prefix abs
-```
-
-Default length is `5`. Supported lengths are `2` through `8`.
-
-Example:
-
-```sh
 npx wordloom --length 6 --contains abse
 ```
 
-Output:
+### Output Example
 
 ```text
 ┌───┬────────┬──────────────────────────────────────────────┐
@@ -48,34 +68,14 @@ Output:
 └───┴────────┴──────────────────────────────────────────────┘
 ```
 
-If nothing matches, `wordloom` prints:
-
-```text
-No results found.
-```
-
-## Why wordloom?
-
-- Uses real English letter patterns derived from [CMUdict](https://github.com/cmusphinx/cmudict), instead of fully random strings
-- Adds meanings from WordNet when a generated result is also a real dictionary word
-- Supports exact length, prefix, suffix, and contains filtering
-- Prints results in alphabetical order in a readable terminal table
-- Highlights dictionary matches in color in interactive terminals
-
-## Install
+### Global Installation
 
 ```sh
 npm install -g wordloom
 wordloom --help
 ```
 
-You can also run it without installing:
-
-```sh
-npx wordloom --contains abse
-```
-
-## Options
+### CLI Options
 
 ```text
 -l, --length <number>         Exact name length to generate (2-8, default: 5)
@@ -83,48 +83,19 @@ npx wordloom --contains abse
 -p, --prefix <prefix>         Literal starting prefix to validate and continue from
 -s, --suffix <suffix>         Literal ending suffix to require
 -h, --help                    Show help
--v, --version                 Show version
 ```
 
-## More examples
+---
 
-```sh
-wordloom
-wordloom --length 6
-wordloom --contains abse
-wordloom --prefix no
-wordloom --suffix ut
-wordloom --length 6 --prefix abs
-wordloom --length 5 --prefix re --suffix t
-```
+## ✦ How it works
 
-## How it works
+Wordloom is conceptually transparent yet powerful:
 
-`wordloom` is source-backed, but the idea is simple:
+1. It learns allowed letter transitions sequentially from **CMUdict**.
+2. It constructs sequences strictly following these verified constraints.
+3. Every generated result is cross-referenced against **WordNet** algorithms. If the lemma is an exact, matching dictionary term, the semantic meaning is automatically resolved.
 
-- it learns allowed letter transitions from CMUdict
-- it generates names that follow those learned patterns
-- it looks up each generated result in WordNet
-- if the result is a real dictionary lemma, it shows the meaning
-
-That means the results are more word-like than random strings, but they are not guaranteed to be common words, proper names, or brand-safe names.
-
-The checked-in generated model files already ship with the repo and the published package, so normal users do not need to run `bun run derive:model`.
-
-## For maintainers
-
-Regenerating the model is only needed when refreshing the checked-in data sources:
-
-```sh
-bun install
-bun run derive:model
-bun run build
-bun test
-bun run lint
-bun run format:check
-```
-
-Generated data lives in [bin/cmudict-model.ts](./bin/cmudict-model.ts) and [bin/wordnet-definitions.ts](./bin/wordnet-definitions.ts).
+_(Note: While results are highly word-like, they are randomly evaluated and are not strictly guaranteed to be common words, proper names, or brand-safe names out of the box)._
 
 ## License
 
