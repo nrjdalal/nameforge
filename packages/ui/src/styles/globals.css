@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@100..1000&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -123,6 +124,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -132,12 +134,15 @@
 @utility perspective-dramatic {
   perspective: 800px;
 }
+
 @utility transform-3d {
   transform-style: preserve-3d;
 }
+
 @utility backface-hidden {
   backface-visibility: hidden;
 }
+
 @utility mask-t-from-50\% {
   mask-image: linear-gradient(to bottom, transparent 50%, black 50%);
 }

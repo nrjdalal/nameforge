@@ -4,10 +4,9 @@ import { Button } from "@workspace/ui/components/button"
 import { Input } from "@workspace/ui/components/input"
 import { Label } from "@workspace/ui/components/label"
 import { Slider } from "@workspace/ui/components/slider"
-import { ArrowLeft, Terminal, LayoutDashboard } from "lucide-react"
-import { motion } from "motion/react"
+import { ArrowLeft, Terminal, LayoutDashboard, Bookmark, BookmarkCheck } from "lucide-react"
 import Link from "next/link"
-import { useState, useTransition } from "react"
+import { useState, useTransition, useEffect } from "react"
 
 import VantaBackground from "@/components/vanta-background"
 
@@ -37,7 +36,7 @@ function parseCliCommand(cmd: string) {
 }
 
 export default function TryPage() {
-  const [mode, setMode] = useState<"ui" | "cli">("ui")
+  const [mode, setMode] = useState<"ui" | "cli" | "bookmarks">("ui")
   const [cliCommand, setCliCommand] = useState("wordloom -l 5")
 
   const [length, setLength] = useState([5])
@@ -50,6 +49,27 @@ export default function TryPage() {
     count: number
     results: { name: string; meaning: string }[]
   } | null>(null)
+
+  // Bookmarks State
+  const [bookmarks, setBookmarks] = useState<{ name: string; meaning: string }[]>([])
+
+  useEffect(() => {
+    const saved = localStorage.getItem("wordloom_bookmarks")
+    if (saved) {
+      try {
+        setBookmarks(JSON.parse(saved))
+      } catch (err) {}
+    }
+  }, [])
+
+  const toggleBookmark = (item: { name: string; meaning: string }) => {
+    setBookmarks((prev) => {
+      const exists = prev.some((b) => b.name === item.name)
+      const updated = exists ? prev.filter((b) => b.name !== item.name) : [...prev, item]
+      localStorage.setItem("wordloom_bookmarks", JSON.stringify(updated))
+      return updated
+    })
+  }
 
   const handleGenerate = () => {
     startTransition(async () => {
@@ -73,26 +93,19 @@ export default function TryPage() {
         finalContains.toLowerCase(),
       )
       setData(res)
+      if (mode === "bookmarks") setMode("ui") // Switch back to see results if they generated
     })
   }
+
+  const displayedResults = mode === "bookmarks" ? bookmarks : (data?.results ?? null)
+  const displayedCount = mode === "bookmarks" ? bookmarks.length : (data?.count ?? 0)
 
   return (
     <div className="relative min-h-screen text-[#1a1a1a] flex items-center justify-center p-4 selection:bg-[#1a1a1a] selection:text-[#ecebe5]">
       <VantaBackground />
 
-      {/* 4:3 Ratio Container */}
-      <motion.main
-        initial={{
-          opacity: 0,
-          scale: 0.92,
-          y: 40,
-          filter: "blur(8px)",
-          transformOrigin: "bottom right",
-        }}
-        animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ type: "spring", bounce: 0, duration: 0.65 }}
-        className="w-full max-w-6xl h-[calc(100vh-2rem)] md:h-auto md:aspect-[4/3] bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative z-10"
-      >
+      {/* Main Container */}
+      <main className="w-full max-w-6xl h-[calc(100vh-2rem)] md:h-auto md:aspect-[4/3] bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative z-10">
         {/* Header */}
         <header className="border-b border-[#1a1a1a] p-6 lg:p-8 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-4">
@@ -106,9 +119,15 @@ export default function TryPage() {
               </button>
               <button
                 onClick={() => setMode("cli")}
-                className={`px-3 py-1 flex items-center gap-2 transition-colors border-l border-[#1a1a1a] ${mode === "cli" ? "bg-[#1a1a1a] text-[#ecebe5]" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
+                className={`px-3 py-1 flex items-center gap-2 transition-colors border-l border-r border-[#1a1a1a] ${mode === "cli" ? "bg-[#1a1a1a] text-[#ecebe5]" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
               >
                 <Terminal className="w-3 h-3" /> CLI
+              </button>
+              <button
+                onClick={() => setMode("bookmarks")}
+                className={`px-3 py-1 flex items-center gap-2 transition-colors ${mode === "bookmarks" ? "bg-[#1a1a1a] text-[#ecebe5]" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
+              >
+                <Bookmark className="w-3 h-3" /> Saved ({bookmarks.length})
               </button>
             </div>
           </div>
@@ -124,22 +143,28 @@ export default function TryPage() {
           {/* Controls Sidebar */}
           <div className="md:col-span-4 border-b md:border-b-0 md:border-r border-[#1a1a1a] bg-[#f8f7f2] p-6 lg:p-8 flex flex-col gap-8 overflow-y-auto">
             {/* Mobile Mode Toggle */}
-            <div className="sm:hidden flex border border-[#1a1a1a] text-xs font-mono">
+            <div className="sm:hidden flex flex-wrap border border-[#1a1a1a] text-xs font-mono">
               <button
                 onClick={() => setMode("ui")}
-                className={`flex-1 py-2 flex justify-center items-center gap-2 transition-colors ${mode === "ui" ? "bg-[#1a1a1a] text-[#ecebe5]" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
+                className={`flex-1 py-2 px-2 flex justify-center items-center gap-2 transition-colors ${mode === "ui" ? "bg-[#1a1a1a] text-[#ecebe5]" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
               >
                 <LayoutDashboard className="w-3 h-3" /> Visual
               </button>
               <button
                 onClick={() => setMode("cli")}
-                className={`flex-1 py-2 flex justify-center items-center gap-2 transition-colors border-l border-[#1a1a1a] ${mode === "cli" ? "bg-[#1a1a1a] text-[#ecebe5]" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
+                className={`flex-1 py-2 px-2 flex justify-center items-center gap-2 transition-colors border-l border-r border-[#1a1a1a] ${mode === "cli" ? "bg-[#1a1a1a] text-[#ecebe5]" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
               >
                 <Terminal className="w-3 h-3" /> CLI
               </button>
+              <button
+                onClick={() => setMode("bookmarks")}
+                className={`flex-1 py-2 px-2 flex justify-center items-center gap-2 transition-colors ${mode === "bookmarks" ? "bg-[#1a1a1a] text-[#ecebe5]" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
+              >
+                <Bookmark className="w-3 h-3" /> Saved
+              </button>
             </div>
 
-            {mode === "ui" ? (
+            {mode === "ui" && (
               <>
                 <div className="space-y-4">
                   <div className="flex justify-between items-end">
@@ -213,7 +238,9 @@ export default function TryPage() {
                   {isPending ? "Computing..." : "Generate"}
                 </Button>
               </>
-            ) : (
+            )}
+
+            {mode === "cli" && (
               <div className="space-y-2 flex-1 flex flex-col">
                 <Label
                   htmlFor="cliCommand"
@@ -251,64 +278,110 @@ export default function TryPage() {
                 )}
               </div>
             )}
+
+            {mode === "bookmarks" && (
+              <div className="flex flex-col flex-1 h-full items-start justify-start gap-4">
+                <h3 className="font-serif text-xl uppercase text-black">Your Collection</h3>
+                <p className="font-sans text-sm opacity-60">
+                  {bookmarks.length === 0
+                    ? "You haven't bookmarked any generations yet."
+                    : `You have successfully saved ${bookmarks.length} phonotactic generation(s). They will presist locally on this device.`}
+                </p>
+                {bookmarks.length > 0 && (
+                  <Button
+                    onClick={() => {
+                      setBookmarks([])
+                      localStorage.removeItem("wordloom_bookmarks")
+                    }}
+                    variant="outline"
+                    className="mt-auto rounded-none border-[#1a1a1a] uppercase font-serif tracking-widest text-xs"
+                  >
+                    Clear All
+                  </Button>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Results Area */}
           <div className="md:col-span-8 p-6 lg:p-8 flex flex-col min-h-0 bg-white">
             <div className="flex justify-between items-center border-b border-[#1a1a1a] pb-4 mb-6 shrink-0">
               <h2 className="font-sans font-semibold uppercase text-sm tracking-widest opacity-60">
-                Result Feed
+                {mode === "bookmarks" ? "Saved Directory" : "Result Feed"}
               </h2>
               <span className="font-mono text-xs uppercase px-2 py-1 bg-[#ecebe5] text-[#1a1a1a]">
-                {data ? `${data.count} found` : "Idle"}
+                {mode === "bookmarks"
+                  ? `${bookmarks.length} saved`
+                  : data
+                    ? `${data.count} found`
+                    : "Idle"}
               </span>
             </div>
 
             <div className="flex-1 overflow-y-auto pr-2">
-              {!data ? (
+              {displayedResults === null ? (
                 <div className="h-full flex items-center justify-center opacity-30">
                   <p className="font-serif text-2xl uppercase tracking-tighter">
-                    Awaiting input...
+                    {mode === "bookmarks" ? "No Bookmarks" : "Awaiting input..."}
                   </p>
                 </div>
-              ) : data.count === 0 ? (
+              ) : displayedCount === 0 ? (
                 <div className="h-full flex items-center justify-center">
                   <p className="font-serif text-lg opacity-50 text-center">
-                    Null constraints.
-                    <br />
-                    Adjust the parameters.
+                    {mode === "bookmarks"
+                      ? "No bookmarks saved."
+                      : "Null constraints.\nAdjust the parameters."}
                   </p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-12">
-                  {data.results.map((item, i) => (
-                    <div
-                      key={i}
-                      className="border border-[#1a1a1a] p-4 flex flex-col group hover:bg-[#1a1a1a] hover:text-white transition-colors cursor-default"
-                    >
-                      <div className="flex justify-between items-start mb-2">
-                        <span className="font-serif text-xl font-bold lowercase tracking-tight">
-                          {item.name}
-                        </span>
-                        {item.meaning && (
-                          <span className="text-[10px] font-mono uppercase bg-[#1a1a1a] text-[#ecebe5] group-hover:bg-[#ecebe5] group-hover:text-[#1a1a1a] px-1 py-0.5">
-                            Def
+                  {displayedResults.map((item, i) => {
+                    const isSaved = bookmarks.some((b) => b.name === item.name)
+
+                    return (
+                      <div
+                        key={i}
+                        className="border border-[#1a1a1a] p-4 flex flex-col group hover:bg-[#1a1a1a] hover:text-white transition-colors cursor-default relative"
+                      >
+                        <button
+                          onClick={() => toggleBookmark(item)}
+                          className="absolute top-4 right-4 text-[#1a1a1a] group-hover:text-white hover:scale-110 transition-transform"
+                          title={isSaved ? "Remove Bookmark" : "Save Bookmark"}
+                        >
+                          {isSaved ? (
+                            <BookmarkCheck className="w-5 h-5 fill-current" />
+                          ) : (
+                            <Bookmark className="w-5 h-5" />
+                          )}
+                        </button>
+
+                        <div className="flex justify-between items-start mb-2 pr-8">
+                          <span
+                            className="text-xl font-bold lowercase tracking-tight"
+                            style={{ fontFamily: "'Google Sans Flex', sans-serif" }}
+                          >
+                            {item.name}
                           </span>
+                          {item.meaning && (
+                            <span className="text-[10px] font-mono uppercase bg-[#1a1a1a] text-[#ecebe5] group-hover:bg-[#ecebe5] group-hover:text-[#1a1a1a] px-1 py-0.5">
+                              Def
+                            </span>
+                          )}
+                        </div>
+                        {item.meaning && (
+                          <p className="font-sans text-xs opacity-70 group-hover:opacity-100 line-clamp-3 leading-relaxed">
+                            {item.meaning}
+                          </p>
                         )}
                       </div>
-                      {item.meaning && (
-                        <p className="font-sans text-xs opacity-70 group-hover:opacity-100 line-clamp-3 leading-relaxed">
-                          {item.meaning}
-                        </p>
-                      )}
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               )}
             </div>
           </div>
         </div>
-      </motion.main>
+      </main>
     </div>
   )
 }
