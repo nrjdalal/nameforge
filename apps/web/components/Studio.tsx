@@ -6,11 +6,10 @@ import { Label } from "@workspace/ui/components/label"
 import { Slider } from "@workspace/ui/components/slider"
 import { ArrowLeft, Bookmark, BookmarkCheck, Copy, LayoutDashboard, Terminal } from "lucide-react"
 import { motion } from "motion/react"
-import Link from "next/link"
 import { useState, useTransition, useEffect } from "react"
 import { toast } from "sonner"
 
-import { generateNamesAction } from "../actions"
+import { generateNamesAction } from "../app/actions"
 
 function parseCliCommand(cmd: string) {
   const args = cmd.trim().split(/\s+/)
@@ -35,7 +34,7 @@ function parseCliCommand(cmd: string) {
   return { parsedLength, parsedPrefix, parsedSuffix, parsedContains }
 }
 
-export default function TryPage() {
+export function Studio({ onBack }: { onBack: () => void }) {
   const [mode, setMode] = useState<"ui" | "cli" | "bookmarks">("ui")
   const [cliCommand, setCliCommand] = useState("wordloom -l 5")
 
@@ -102,7 +101,7 @@ export default function TryPage() {
         finalContains.toLowerCase(),
       )
       setData(res)
-      if (mode === "bookmarks") setMode("ui") // Switch back to see results if they generated
+      if (mode === "bookmarks") setMode("ui")
     })
   }
 
@@ -110,13 +109,27 @@ export default function TryPage() {
   const displayedCount = mode === "bookmarks" ? bookmarks.length : (data?.count ?? 0)
 
   return (
-    <div className="relative min-h-screen text-[#1a1a1a] flex items-center justify-center p-4 selection:bg-[#1a1a1a] selection:text-[#ecebe5] bg-[#ecebe5]">
-      {/* Main Container */}
-      <main className="w-full max-w-6xl h-[calc(100vh-2rem)] md:h-auto md:aspect-[4/3] bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative z-10">
+    <motion.div
+      layoutId="studio-card"
+      className="w-full h-full flex flex-col relative z-20 overflow-hidden"
+      transition={{ type: "spring", stiffness: 120, damping: 24 }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+        className="flex flex-col h-full"
+      >
         {/* Header */}
         <header className="border-b border-[#1a1a1a] p-6 lg:p-8 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-4">
-            <h1 className="font-serif text-3xl font-bold uppercase tracking-tighter">Studio</h1>
+            <motion.h1
+              layoutId="studio-title"
+              className="font-serif text-3xl font-bold uppercase tracking-tighter"
+            >
+              Studio
+            </motion.h1>
             <div className="hidden sm:flex border border-[#1a1a1a] text-xs font-mono ml-4">
               <button
                 onClick={() => setMode("ui")}
@@ -138,12 +151,12 @@ export default function TryPage() {
               </button>
             </div>
           </div>
-          <Link
-            href="/"
+          <button
+            onClick={onBack}
             className="font-mono text-xs uppercase hover:underline opacity-60 flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" /> Return
-          </Link>
+          </button>
         </header>
 
         <div className="flex-1 grid grid-cols-1 md:grid-cols-12 min-h-0">
@@ -278,12 +291,6 @@ export default function TryPage() {
                 />
                 <div className="flex justify-between items-center mt-2">
                   <p className="font-mono text-[10px] uppercase opacity-50">Press Enter to run</p>
-                  <Link
-                    href="/commands"
-                    className="font-mono text-[10px] uppercase text-[#1a1a1a] underline hover:opacity-70"
-                  >
-                    View CLI Docs
-                  </Link>
                 </div>
                 {isPending && (
                   <p className="font-mono text-[10px] uppercase mt-4 text-center opacity-50 animate-pulse">
@@ -342,9 +349,7 @@ export default function TryPage() {
               ) : displayedCount === 0 ? (
                 <div className="h-full flex items-center justify-center">
                   <p className="font-serif text-lg opacity-50 text-center">
-                    {mode === "bookmarks"
-                      ? "No bookmarks saved."
-                      : "Null constraints.\nAdjust the parameters."}
+                    {mode === "bookmarks" ? "No bookmarks saved." : "0 results found"}
                   </p>
                 </div>
               ) : (
@@ -378,10 +383,7 @@ export default function TryPage() {
                         </button>
 
                         <div className="flex flex-col mb-2 pr-20">
-                          <span
-                            className="text-xl font-bold lowercase tracking-widest"
-                            style={{ fontFamily: "'Google Sans Flex', sans-serif" }}
-                          >
+                          <span className="text-xl font-bold lowercase tracking-widest">
                             {item.name}
                           </span>
                         </div>
@@ -403,7 +405,7 @@ export default function TryPage() {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }

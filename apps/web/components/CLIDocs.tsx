@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowLeft, Copy, Check } from "lucide-react"
-import Link from "next/link"
+import { motion } from "motion/react"
 import { useState } from "react"
 
 const commands = [
@@ -27,7 +27,7 @@ const commands = [
   },
 ]
 
-export default function CommandsPage() {
+export function CLIDocs({ onBack }: { onBack: () => void }) {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
 
   const handleCopy = (cmd: string, index: number) => {
@@ -37,19 +37,34 @@ export default function CommandsPage() {
   }
 
   return (
-    <div className="relative min-h-screen text-[#1a1a1a] flex items-center justify-center p-4 selection:bg-[#1a1a1a] selection:text-[#ecebe5] bg-[#ecebe5]">
-      <main className="w-full max-w-4xl min-h-[95vh] md:min-h-0 bg-white border border-[#1a1a1a] shadow-2xl overflow-hidden flex flex-col relative z-10">
+    <motion.div
+      layoutId="docs-card"
+      className="w-full h-full flex flex-col relative z-20 overflow-hidden"
+      transition={{ type: "spring", stiffness: 120, damping: 24 }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+        className="flex flex-col h-full"
+      >
         <header className="border-b border-[#1a1a1a] p-6 lg:p-8 flex justify-between items-center shrink-0">
-          <h1 className="font-serif text-3xl font-bold uppercase tracking-tighter">CLI Commands</h1>
-          <Link
-            href="/"
+          <motion.h1
+            layoutId="docs-title"
+            className="font-serif text-3xl font-bold uppercase tracking-tighter"
+          >
+            CLI Commands
+          </motion.h1>
+          <button
+            onClick={onBack}
             className="font-mono text-xs uppercase hover:underline opacity-60 flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" /> Return
-          </Link>
+          </button>
         </header>
 
-        <div className="p-6 lg:p-8 flex flex-col gap-6 bg-[#f8f7f2] h-full">
+        <div className="p-6 lg:p-8 flex-1 flex flex-col gap-6 bg-[#f8f7f2] overflow-y-auto">
           <p className="font-sans text-sm opacity-70">
             Use these commands in your terminal or the CLI tab in the Studio.
           </p>
@@ -88,7 +103,7 @@ export default function CommandsPage() {
             ))}
           </div>
         </div>
-      </main>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
