@@ -283,7 +283,7 @@ export default function TryPage() {
                 <div className="flex justify-between items-center mt-2">
                   <p className="font-mono text-[10px] uppercase opacity-50">Press Enter to run</p>
                   <Link
-                    href="/commands"
+                    href="/docs"
                     className="font-mono text-[10px] uppercase text-[#1a1a1a] underline hover:opacity-70"
                   >
                     View CLI Docs

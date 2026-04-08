@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
+import Link from "next/link"
 import { useEffect, useState, useTransition } from "react"
 import { toast } from "sonner"
 
@@ -508,6 +509,12 @@ export function Studio({
               />
               <div className="flex justify-between items-center mt-2">
                 <p className="font-mono text-[10px] uppercase opacity-50">Press Enter to run</p>
+                <Link
+                  href="/docs"
+                  className="font-mono text-[10px] uppercase text-[#1a1a1a] underline hover:opacity-70"
+                >
+                  View CLI Docs
+                </Link>
               </div>
               {isPending && (
                 <p className="font-mono text-[10px] uppercase mt-4 text-center opacity-50 animate-pulse">

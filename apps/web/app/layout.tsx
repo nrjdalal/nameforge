@@ -1,5 +1,3 @@
-import { cn } from "@workspace/ui/lib/utils"
-
 import "@workspace/ui/globals.css"
 import type { Metadata } from "next"
 import { Toaster } from "sonner"
