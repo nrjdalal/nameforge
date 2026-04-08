@@ -3,9 +3,8 @@ import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import { Toaster } from "sonner"
 
+import Background from "@/components/Background"
 import { ThemeProvider } from "@/components/theme-provider"
-
-const Background = dynamic(() => import("@/components/Background"), { ssr: false })
 
 export const metadata: Metadata = {
   title: "Wordloom — The Engineering Issue",

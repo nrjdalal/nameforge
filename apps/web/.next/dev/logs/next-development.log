@@ -712,3 +712,685 @@ Ecmascript file had an error
 
 `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
 [06:01:12.364] Server  LOG     ✓ Compiled in 302ms
+[06:01:13.145] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:32.471] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:01:33.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:34.159] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:34.159] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:34.159] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:34.764] Browser ERROR   uncaughtError: Error: ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:01:34.957] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:34.957] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:34.957] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:35.059] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:01:35.143] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:03:33.720] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:03:33.905] Browser ERROR   uncaughtError: Error: ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:03:34.044] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:03:34.044] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:03:34.044] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:03:34.044] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:03:34.142] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:03:34.142] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:07.581] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:07.842] Browser ERROR   uncaughtError: Error: ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:08.034] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.034] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.034] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.034] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.055] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:08.214] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:08.310] Browser ERROR   uncaughtError: Error: ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:08.389] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.389] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.389] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.389] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.397] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:08.538] Browser ERROR   uncaughtError: Error: ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:08.578] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.578] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.578] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:08.596] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:08.749] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:08.921] Server  ERROR   ⨯ ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:09.058] Browser ERROR   uncaughtError: Error: ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+
+
+[06:05:09.213] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:09.213] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:09.214] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:09.214] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:10.174] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+[06:05:22.408] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[06:05:22.993] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[06:05:23.372] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[06:05:23.412] Browser ERROR   ./apps/web/app/layout.tsx:8:20
+Ecmascript file had an error
+   6 | import { ThemeProvider } from "@/components/theme-provider"
+   7 |
+>  8 | const Background = dynamic(() => import("@/components/Background"), { ssr: false })
+     |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export const metadata: Metadata = {
+  11 |   title: "Wordloom — The Engineering Issue",
+
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
