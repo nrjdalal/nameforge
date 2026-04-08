@@ -23,15 +23,6 @@ const canEnd = (context: string) => (CMUDICT_TRANSITIONS.get(context) ?? "").inc
 const advanceContext = (context: string, character: string) =>
   `${context}${character}`.slice(-CMUDICT_CONTEXT_SIZE)
 
-const shuffleString = (str: string) => {
-  const arr = str.split("")
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[arr[i], arr[j]] = [arr[j], arr[i]]
-  }
-  return arr.join("")
-}
-
 const buildFailureTable = (pattern: string) => {
   if (!pattern) {
     return []
@@ -234,9 +225,7 @@ export const createGenerationPlan = (
       return
     }
 
-    const nextChars = shuffleString(listNextCharacters(context))
-
-    for (const character of nextChars) {
+    for (const character of listNextCharacters(context)) {
       const nextContext = advanceContext(context, character)
       const nextSuffixState = advancePatternState(
         suffix,
