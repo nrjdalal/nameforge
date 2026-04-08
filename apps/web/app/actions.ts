@@ -8,6 +8,8 @@ export async function generateNamesAction(
   prefix: string,
   suffix: string,
   contains: string,
+  skip = 0,
+  limit = 500,
 ) {
   try {
     const mainPlan = createGenerationPlan(targetLength, prefix, suffix, contains)
@@ -16,36 +18,21 @@ export async function generateNamesAction(
       return { count: 0, results: [] }
     }
 
-    const MAX_RESULTS = 500
     const results: { name: string; meaning: string }[] = []
+    let skipped = 0
+    let fetched = 0
 
-    if (prefix === "") {
-      // Broad sampling across the alphabet
-      const letters = "abcdefghijklmnopqrstuvwxyz".split("")
-      const quotaPerLetter = Math.ceil(MAX_RESULTS / 26)
-
-      for (const char of letters) {
-        const letterPlan = createGenerationPlan(targetLength, char, suffix, contains)
-        if (letterPlan.count === 0) continue
-
-        let fetchedForLetter = 0
-        for (const name of letterPlan.names) {
-          const meaning = WORDNET_DEFINITIONS.get(name) ?? ""
-          results.push({ name, meaning })
-          fetchedForLetter++
-          if (fetchedForLetter >= quotaPerLetter) break
-        }
-        if (results.length >= MAX_RESULTS) break
+    for (const name of mainPlan.names) {
+      if (skipped < skip) {
+        skipped++
+        continue
       }
-    } else {
-      // Standard deep search for specific prefix
-      let fetched = 0
-      for (const name of mainPlan.names) {
-        const meaning = WORDNET_DEFINITIONS.get(name) ?? ""
-        results.push({ name, meaning })
-        fetched++
-        if (fetched >= MAX_RESULTS) break
-      }
+
+      const meaning = WORDNET_DEFINITIONS.get(name) ?? ""
+      results.push({ name, meaning })
+      fetched++
+
+      if (fetched >= limit) break
     }
 
     return { count: mainPlan.count, results }

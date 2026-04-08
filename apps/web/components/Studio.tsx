@@ -17,7 +17,7 @@ import {
 } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import Link from "next/link"
-import { useEffect, useState, useTransition } from "react"
+import { useEffect, useRef, useState, useTransition } from "react"
 import { toast } from "sonner"
 
 import { generateNamesAction } from "../app/actions"
@@ -200,10 +200,10 @@ export function Studio({
   const [contains, setContains] = useState("")
 
   const [isPending, startTransition] = useTransition()
-  const [data, setData] = useState<{
-    count: number
-    results: { name: string; meaning: string }[]
-  } | null>(null)
+  const [results, setResults] = useState<{ name: string; meaning: string }[]>([])
+  const [totalCount, setTotalCount] = useState(0)
+  const [skip, setSkip] = useState(0)
+  const [hasMore, setHasMore] = useState(false)
   const [availabilityTarget, setAvailabilityTarget] = useState<string | null>(null)
   const [copyFeedback, setCopyFeedback] = useState<{ name: string; key: number } | null>(null)
   const [bookmarkFeedback, setBookmarkFeedback] = useState<{ name: string; key: number } | null>(
@@ -213,6 +213,9 @@ export function Studio({
   // Bookmarks State
   const [bookmarks, setBookmarks] = useState<{ name: string; meaning: string }[]>([])
   const [hasMounted, setHasMounted] = useState(false)
+  const [bookmarkSort, setBookmarkSort] = useState<"latest" | "alpha">("latest")
+
+  const sentinelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setHasMounted(true)
@@ -276,6 +279,11 @@ export function Studio({
   }
 
   const handleGenerate = () => {
+    setResults([])
+    setSkip(0)
+    setTotalCount(0)
+    setHasMore(false)
+
     startTransition(async () => {
       let finalLength = length[0] ?? 5
       let finalPrefix = prefix
@@ -295,14 +303,77 @@ export function Studio({
         finalPrefix.toLowerCase(),
         finalSuffix.toLowerCase(),
         finalContains.toLowerCase(),
+        0,
+        500,
       )
-      setData(res)
+
+      setResults(res.results)
+      setTotalCount(res.count)
+      setSkip(res.results.length)
+      setHasMore(res.results.length < res.count)
+
       if (mode === "bookmarks") setMode("ui")
     })
   }
 
-  const displayedResults = mode === "bookmarks" ? bookmarks : (data?.results ?? null)
-  const displayedCount = mode === "bookmarks" ? bookmarks.length : (data?.count ?? 0)
+  const loadMore = () => {
+    if (isPending || !hasMore) return
+
+    startTransition(async () => {
+      let finalLength = length[0] ?? 5
+      let finalPrefix = prefix
+      let finalSuffix = suffix
+      let finalContains = contains
+
+      if (mode === "cli") {
+        const parsed = parseCliCommand(cliCommand)
+        finalLength = parsed.parsedLength
+        finalPrefix = parsed.parsedPrefix
+        finalSuffix = parsed.parsedSuffix
+        finalContains = parsed.parsedContains
+      }
+
+      const res = await generateNamesAction(
+        finalLength,
+        finalPrefix.toLowerCase(),
+        finalSuffix.toLowerCase(),
+        finalContains.toLowerCase(),
+        skip,
+        500,
+      )
+
+      setResults((prev) => [...prev, ...res.results])
+      setSkip((prev) => prev + res.results.length)
+      setHasMore(results.length + res.results.length < res.count)
+    })
+  }
+
+  useEffect(() => {
+    if (!hasMore || isPending) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          loadMore()
+        }
+      },
+      { threshold: 1.0 },
+    )
+
+    if (sentinelRef.current) {
+      observer.observe(sentinelRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [hasMore, isPending, skip])
+
+  const sortedBookmarks = [...bookmarks].sort((a, b) => {
+    if (bookmarkSort === "alpha") return a.name.localeCompare(b.name)
+    return 0 // Latest is default (array order)
+  })
+
+  const displayedResults = mode === "bookmarks" ? sortedBookmarks : results
+  const displayedCount = mode === "bookmarks" ? bookmarks.length : totalCount
 
   // Alphabetical Grouping if we have many results
   const groupedResults =
@@ -526,7 +597,24 @@ export function Studio({
 
           {mode === "bookmarks" && (
             <div className="flex flex-col flex-1 h-full items-start justify-start gap-4">
-              <h3 className="font-serif text-xl uppercase text-black">Your Collection</h3>
+              <div className="w-full flex justify-between items-center">
+                <h3 className="font-serif text-xl uppercase text-black">Your Collection</h3>
+                <div className="flex border border-[#1a1a1a] text-[10px] font-mono">
+                  <button
+                    onClick={() => setBookmarkSort("latest")}
+                    className={`px-2 py-0.5 transition-colors ${bookmarkSort === "latest" ? "bg-[#1a1a1a] text-white" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
+                  >
+                    Latest
+                  </button>
+                  <button
+                    onClick={() => setBookmarkSort("alpha")}
+                    className={`px-2 py-0.5 transition-colors border-l border-[#1a1a1a] ${bookmarkSort === "alpha" ? "bg-[#1a1a1a] text-white" : "text-[#1a1a1a] hover:bg-neutral-100"}`}
+                  >
+                    A-Z
+                  </button>
+                </div>
+              </div>
+
               <p className="font-sans text-sm opacity-60">
                 {bookmarks.length === 0
                   ? "You haven't bookmarked any generations yet."
@@ -560,30 +648,24 @@ export function Studio({
                 <span className="font-mono text-xs uppercase px-2 py-1 bg-[#ecebe5] text-[#1a1a1a]">
                   {mode === "bookmarks"
                     ? `${bookmarks.length} saved`
-                    : data
-                      ? `${data.count} found`
+                    : totalCount > 0
+                      ? `${totalCount} found`
                       : "Idle"}
                 </span>
               </div>
 
               <div className="flex-1 overflow-y-auto pr-2">
-                {displayedResults === null ? (
+                {displayedResults.length === 0 ? (
                   <div className="h-full flex items-center justify-center opacity-30">
                     <p className="font-serif text-2xl uppercase tracking-tighter">
                       {mode === "bookmarks" ? "No Bookmarks" : "Awaiting input..."}
-                    </p>
-                  </div>
-                ) : displayedCount === 0 ? (
-                  <div className="h-full flex items-center justify-center">
-                    <p className="font-serif text-lg opacity-50 text-center">
-                      {mode === "bookmarks" ? "No bookmarks saved." : "0 results found"}
                     </p>
                   </div>
                 ) : (
                   <div className="space-y-4 pb-12">
                     {mode !== "bookmarks" && (
                       <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#1a1a1a]/60">
-                        Click a generated name to check domain and social availability
+                        Total {displayedCount} possibilities found alphabetical (A-Z)
                       </p>
                     )}
 
@@ -632,6 +714,14 @@ export function Studio({
                               onCheckAvailability={setAvailabilityTarget}
                             />
                           ))}
+                        </div>
+                      )}
+                      {mode !== "bookmarks" && hasMore && (
+                        <div ref={sentinelRef} className="py-12 flex flex-col items-center gap-4">
+                          <div className="w-8 h-8 border-2 border-[#1a1a1a] border-t-transparent rounded-full animate-spin" />
+                          <p className="font-mono text-[10px] uppercase opacity-40">
+                            Loading more possibilities...
+                          </p>
                         </div>
                       )}
                     </div>
