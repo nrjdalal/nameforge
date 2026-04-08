@@ -1,8 +1,27 @@
 "use client"
 
 import { ArrowLeft, Copy, Check } from "lucide-react"
-import { motion } from "motion/react"
-import { useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
+import { useEffect, useState } from "react"
+
+const shellSpring = { type: "spring" as const, stiffness: 220, damping: 34, mass: 1.1 }
+const stagger = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0.04,
+    },
+  },
+}
+const reveal = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.38, ease: "easeOut" as const },
+  },
+}
 
 const commands = [
   {
@@ -28,28 +47,36 @@ const commands = [
 ]
 
 export function CLIDocs({ onBack }: { onBack: () => void }) {
-  const [copiedIndex, setCopiedIndex] = useState<number | null>(null)
+  const [copiedState, setCopiedState] = useState<{ index: number; key: number } | null>(null)
+
+  useEffect(() => {
+    if (!copiedState) return
+
+    const timeout = window.setTimeout(() => setCopiedState(null), 900)
+    return () => window.clearTimeout(timeout)
+  }, [copiedState])
 
   const handleCopy = (cmd: string, index: number) => {
     navigator.clipboard.writeText(cmd)
-    setCopiedIndex(index)
-    setTimeout(() => setCopiedIndex(null), 2000)
+    setCopiedState({ index, key: Date.now() })
   }
 
   return (
     <motion.div
-      layoutId="docs-card"
       className="w-full h-full flex flex-col relative z-20 overflow-hidden"
-      transition={{ type: "spring", stiffness: 120, damping: 24 }}
+      transition={shellSpring}
     >
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        variants={stagger}
+        initial="hidden"
+        animate="show"
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
         className="flex flex-col h-full"
       >
-        <header className="border-b border-[#1a1a1a] p-6 lg:p-8 flex justify-between items-center shrink-0">
+        <motion.header
+          variants={reveal}
+          className="border-b border-[#1a1a1a] p-6 lg:p-8 flex justify-between items-center shrink-0"
+        >
           <motion.h1
             layoutId="docs-title"
             className="font-serif text-3xl font-bold uppercase tracking-tighter"
@@ -62,16 +89,25 @@ export function CLIDocs({ onBack }: { onBack: () => void }) {
           >
             <ArrowLeft className="w-4 h-4" /> Return
           </button>
-        </header>
+        </motion.header>
 
-        <div className="p-6 lg:p-8 flex-1 flex flex-col gap-6 bg-[#f8f7f2] overflow-y-auto">
+        <motion.div
+          variants={reveal}
+          className="p-6 lg:p-8 flex-1 flex flex-col gap-6 bg-[#f8f7f2] overflow-y-auto"
+        >
           <p className="font-sans text-sm opacity-70">
             Use these commands in your terminal or the CLI tab in the Studio.
           </p>
 
-          <div className="flex flex-col gap-4">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+            className="flex flex-col gap-4"
+          >
             {commands.map((c, i) => (
-              <div
+              <motion.div
+                variants={reveal}
                 key={i}
                 className="flex flex-col sm:flex-row sm:items-center justify-between border border-[#1a1a1a] bg-white p-4 gap-4"
               >
@@ -83,26 +119,36 @@ export function CLIDocs({ onBack }: { onBack: () => void }) {
                     {c.desc}
                   </span>
                 </div>
-                <button
+                <motion.button
+                  type="button"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={() => handleCopy(c.cmd, i)}
-                  className="flex items-center justify-center border border-[#1a1a1a] bg-white hover:bg-[#1a1a1a] hover:text-[#ecebe5] text-[#1a1a1a] transition-colors p-2 shrink-0 h-10 w-10 sm:w-auto sm:px-4"
+                  className="p-2 rounded-full hover:bg-[#1a1a1a]/10 transition-colors relative flex items-center justify-center shrink-0 h-10 w-10"
+                  title="Copy"
                 >
-                  {copiedIndex === i ? (
-                    <span className="flex items-center gap-2">
-                      <Check className="w-4 h-4 text-green-500" />{" "}
-                      <span className="hidden sm:inline text-xs font-mono uppercase">Copied</span>
-                    </span>
+                  <AnimatePresence initial={false}>
+                    {copiedState?.index === i && (
+                      <motion.span
+                        key={`docs-copy-pulse-${copiedState.key}`}
+                        initial={{ scale: 0.5, opacity: 0.5 }}
+                        animate={{ scale: 1.8, opacity: 0 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="absolute inset-0 rounded-full border border-current"
+                      />
+                    )}
+                  </AnimatePresence>
+                  {copiedState?.index === i ? (
+                    <Check className="w-4 h-4 text-green-500" />
                   ) : (
-                    <span className="flex items-center gap-2">
-                      <Copy className="w-4 h-4" />{" "}
-                      <span className="hidden sm:inline text-xs font-mono uppercase">Copy</span>
-                    </span>
+                    <Copy className="w-4 h-4" />
                   )}
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </motion.div>
     </motion.div>
   )
