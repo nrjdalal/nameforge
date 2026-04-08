@@ -737,7 +737,7 @@ export function Studio({
 
               <div className="flex-1 overflow-y-auto pr-2">
                 {mode !== "bookmarks" && Object.keys(letterOffsets).length > 0 && (
-                  <div className="flex flex-wrap gap-1 mb-6 border-b border-[#1a1a1a] pb-4 sticky top-0 bg-white z-20">
+                  <div className="flex flex-row flex-nowrap items-center gap-1 mb-2 sticky top-0 bg-white z-20 overflow-x-auto no-scrollbar py-0.5">
                     {"abcdefghijklmnopqrstuvwxyz".split("").map((l) => {
                       const isAvailable = letterOffsets[l] !== undefined && letterOffsets[l] !== -1
                       return (
@@ -745,13 +745,13 @@ export function Studio({
                           key={l}
                           disabled={!isAvailable}
                           onClick={() => jumpToLetter(l)}
-                          className={`w-7 h-7 flex items-center justify-center text-[10px] font-mono uppercase transition-all
+                          className={`text-[10px] font-mono uppercase transition-all px-0.5 bg-transparent border-none
                             ${
                               activeLetter === l
-                                ? "bg-[#1a1a1a] text-white"
+                                ? "text-black font-bold"
                                 : isAvailable
-                                  ? "text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white"
-                                  : "text-[#1a1a1a]/20 cursor-not-allowed"
+                                  ? "text-neutral-400 hover:text-black"
+                                  : "text-neutral-200 cursor-not-allowed"
                             }
                           `}
                         >
