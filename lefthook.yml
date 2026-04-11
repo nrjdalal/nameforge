@@ -4,6 +4,9 @@ pre-commit:
     lint-staged:
       run: bunx lint-staged --verbose
       stage_fixed: true
+    build:
+      run: bun run build
+      interactive: true
 
 commit-msg:
   commands:

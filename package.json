@@ -29,18 +29,18 @@
     "wordloom": "./dist/index.mjs"
   },
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "packages/*",
+    "web/*"
   ],
   "files": [
     "dist"
   ],
   "type": "module",
   "scripts": {
-    "build": "tsdown",
-    "dev": "turbo dev",
+    "build": "tsdown && turbo run build",
+    "dev": "turbo dev --ui tui",
     "dev:cli": "tsdown --watch",
-    "dev:web": "turbo dev --filter=web",
+    "dev:web": "turbo dev --filter=@web/next --ui tui",
     "derive:model": "node scripts/derive-cmudict-model.mjs && oxfmt bin/cmudict-model.ts bin/wordnet-definitions.ts",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
@@ -57,7 +57,6 @@
     "lint-staged": "^16.4.0",
     "oxfmt": "^0.41.0",
     "oxlint": "^1.56.0",
-    "sort-package-json": "^3.6.1",
     "tsdown": "^0.21.4",
     "turbo": "^2.9.4",
     "typescript": "^5.9.3"
